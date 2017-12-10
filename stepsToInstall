@@ -1,0 +1,6 @@
+
+
+### react native video
+
+npm i -S react-native-video
+react-native link
