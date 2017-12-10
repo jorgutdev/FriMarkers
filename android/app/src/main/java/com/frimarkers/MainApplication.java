@@ -15,6 +15,7 @@ import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
 import java.util.List;
+import io.invertase.firebase.database.RNFirebaseDatabasePackage; 
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -32,7 +33,8 @@ public class MainApplication extends Application implements ReactApplication {
             new ReactVideoPackage(),
             new ReactNativeConfigPackage(),
             new ReactNativeI18n(),
-            new VectorIconsPackage()
+            new VectorIconsPackage(),
+            new RNFirebaseDatabasePackage()
       );
     }
 

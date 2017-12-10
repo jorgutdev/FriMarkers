@@ -4,14 +4,20 @@ import { Images } from '../Themes';
 import Video from 'react-native-video';
 // Styles
 import styles from './Styles/SplashScreenStyles';
+import MetadataActions from '../Redux/MetadataRedux';
+import { connect } from 'react-redux';
 
-export default class LaunchScreen extends Component {
+class SplashScreen extends Component {
+  componentWillMount() {
+    this.props.metadataRequest();
+  }
+
   render() {
     return (
       <View style={styles.rootContainer}>
         <Video
           source={{
-            uri: 'https://github.com/mediaelement/mediaelement-files/raw/master/big_buck_bunny.mp4',
+            uri: this.props.videoBackground,
           }} // Can be a URL or a local file.
           ref={(ref) => {
             this.player = ref;
@@ -42,3 +48,14 @@ export default class LaunchScreen extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  videoBackground: state.metadata.videoBackground,
+});
+
+// wraps dispatch to create nicer functions to call within our component
+const mapDispatchToProps = dispatch => ({
+  metadataRequest: () => dispatch(MetadataActions.request()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);
