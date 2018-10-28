@@ -8,3 +8,4 @@ AppRegistry.registerComponent('Frimarkers', () => App);
 // BB
 // CC
 // DD
+// EE
